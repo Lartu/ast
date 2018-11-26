@@ -5,6 +5,9 @@ The aforementioned list can be any kind of text, it will be split according to a
 (defaults to `' '` and always splits lines)
 and just the numbers found in it will be taken into consideration.
 
+# How to Build
+A building script is included with the rest of the source. Run `compile` to compile **ast**.
+
 # How to Use
 Use the command `ast OPTION [delimiter]`, where `OPTION` refers to the operation you wish to perform (`-s` for sum, `-m` for mean, `-v` for variance, `-d` for standard deviation) and `delimiter` is the token used to split the passed string. Alternate switches can be found in `ast --help`.
 
