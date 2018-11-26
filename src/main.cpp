@@ -13,6 +13,7 @@ bool f_sumMode = false; //summation mode
 bool f_avgMode = false; //mean mode
 bool f_varMode = false; //variance mode
 bool f_stdMode = false; //standard deviation mode
+string delimiter = " ";
 
 vector<string> split(string str, string sep){
     char* cstr=const_cast<char*>(str.c_str());
@@ -26,18 +27,6 @@ vector<string> split(string str, string sep){
     return arr;
 }
 
-void displayHelp(){
-    cout << "Usage: ast OPTION" << endl << endl;
-    cout << "  -a, -m, --avg, --mean" << endl;
-    cout << "\tOutput average / mean of all numbers in data passed through stdin." << endl;
-    cout << "  -s, --sum" << endl;
-    cout << "\tOutput sum of all numbers in data passed through stdin." << endl;
-    cout << "  -v, --var" << endl;
-    cout << "\tOutput variance of all numbers in data passed through stdin." << endl;
-    cout << "  -d, --dev" << endl;
-    cout << "\tOutput standard deviation of all numbers in data passed through stdin." << endl;
-}
-
 void displayVersion(){
     cout << "\033[1;37mast\033[0m ";
     cout << %VERSION; //To be replaced by compile script
@@ -47,22 +36,40 @@ void displayVersion(){
     cout << "Repository: <https://github.com/lartu/ast>." << endl;
 }
 
+void displayHelp(){
+    cout << "Usage: ast OPTION [delimiter]" << endl << endl;
+    cout << "  -a, -m, --avg, --mean" << endl;
+    cout << "\tOutput average / mean of all numbers in data passed through stdin." << endl;
+    cout << "  -s, --sum" << endl;
+    cout << "\tOutput sum of all numbers in data passed through stdin." << endl;
+    cout << "  -v, --var" << endl;
+    cout << "\tOutput variance of all numbers in data passed through stdin." << endl;
+    cout << "  -d, --dev" << endl;
+    cout << "\tOutput standard deviation of all numbers in data passed through stdin." << endl;
+    cout << "  -h, --help" << endl;
+    cout << "\tPrints this help and exits." << endl;
+    cout << "  --version" << endl;
+    cout << "\tPrints version information." << endl;
+    cout << endl;
+    displayVersion();
+}
+
 void check_flags(const vector<string> & args){
     for(int i = 0; i < args.size(); ++i){
         if(args[i] == "-h" || args[i] == "--help"){
             displayHelp();
             exit(0);
         }
-        if(args[i] == "--version"){
+        else if(args[i] == "--version"){
             displayVersion();
             exit(0);
         }
-        if(args[i] == "-a" || args[i] == "--avg" || 
+        else if(args[i] == "-a" || args[i] == "--avg" || 
            args[i] == "-m" || args[i] == "--mean"){
             f_avgMode = true;
             f_sumMode = f_varMode = f_stdMode = false;
         }
-        if(args[i] == "-s" || args[i] == "--sum"){
+        else if(args[i] == "-s" || args[i] == "--sum"){
             f_sumMode = true;
             f_avgMode = f_varMode = f_stdMode = false;
         }
@@ -73,6 +80,9 @@ void check_flags(const vector<string> & args){
         else if(args[i] == "-d" || args[i] == "--dev"){
             f_stdMode = true;
             f_sumMode = f_avgMode = f_varMode = false;
+        }
+        else {
+            delimiter = args[i];
         }
     }
 }
@@ -87,8 +97,6 @@ int main(int argc, char** argv){
     // - If no output mode was choosen -
     if(f_avgMode == f_sumMode == f_stdMode == f_varMode){
         displayHelp();
-        cout << endl;
-        displayVersion();
         exit(0);
     }
     
@@ -98,9 +106,10 @@ int main(int argc, char** argv){
     vector<long double> numbers;
     string input_line;
     while(getline(cin, input_line)){
-        vector<string> line_tokens = split(input_line, " ");
+        vector<string> line_tokens = split(input_line, delimiter);
         for(string token : line_tokens){
             try {
+                cout << stod(token) << endl;
                 sum += stod(token);
                 ++total_numbers;
                 // - If we are on standard deviation mode store numbers -
