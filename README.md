@@ -18,6 +18,6 @@ Use the command `ast OPTION [delimiter]`, where `OPTION` refers to the operation
 
  * Calculating the population **variance** of said list:<br/>`echo "123 323 42 78.43434 -78.9" | ast -v` outputs `17212.2418310776964`.
 
- * Calculating the **standard** deviation of said list:<br/>`echo "123 323 42 78.43434 -78.9" | ast -d` outputs `131.19543372799869`.
+ * Calculating the **standard deviation** of said list:<br/>`echo "123 323 42 78.43434 -78.9" | ast -d` outputs `131.19543372799869`.
 
  * Calculating the **sum** of a list of four numbers **split by commas**:<br/>`echo "123, 323,42 ,78.43434" | ast -s ,` outputs `566.434340000000006`.
