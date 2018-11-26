@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+#Set ast version
+VERSION="1.0"
+
+#Fail if we stumble upon some error
+set -e
+
+#Say Hi
+echo "ast $VERSION Compiler Script"
+
+#Create temporal files
+echo "[*] Creating temporary files..."
+mkdir -p tmp
+
+#Copy source to temporary file
+echo "[*] Copying source to temporary files..."
+cp src/main.cpp tmp/
+
+#Update version and date on created file
+sed -i "s/%VERSION/\"$VERSION\"/g" tmp/main.cpp
+sed -i "s/%COMPILEDATE/\"`date`\"/g" tmp/main.cpp
+
+#Make
+echo "[*] Making..."
+make tmp/main -B
+mv tmp/main ./ast
+
+#Remove temporal files
+echo "[*] Removing temporary files..."
+rm -rf tmp
+
+#Done
+echo "Done!"
