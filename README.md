@@ -24,3 +24,6 @@ Use the command `ast OPTION [delimiter]`, where `OPTION` refers to the operation
  * Calculating the population **standard deviation** of said list:<br/>`echo "123 323 42 78.43434 -78.9" | ast -d` outputs `131.19543372799869`.
 
  * Calculating the **sum** of a list of four numbers **split by commas**:<br/>`echo "123, 323,42 ,78.43434" | ast -s ,` outputs `566.434340000000006`.
+
+# How to Contribute
+More features are always welcome! It would be nice to have some kind of file loading feature (`ast -f myfile.txt -s` to sum the values from myfile.txt), sample variance, sample standard deviation, etc. The source code is very short and easy to understand, and push requests are welcome, so feel free to submit one! 
