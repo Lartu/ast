@@ -1,6 +1,6 @@
-![ast: the average and sum tool](https://raw.githubusercontent.com/Lartu/ast/master/logo/astlogo.png)
-
 ![Stage](https://img.shields.io/badge/stage-stable-yellow.svg) ![Version](https://img.shields.io/badge/version-1.0-blue.svg)
+
+![ast: the average and sum tool](https://raw.githubusercontent.com/Lartu/ast/master/logo/astlogo.png)
 
 **ast** (**a**verage and **s**um **t**ool) is a command line tool designed to calculate the sum, mean, variance or standard
 deviation of a list of numbers passed through `stdin`.
