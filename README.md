@@ -2,7 +2,7 @@
 
 # ![Stage](https://img.shields.io/badge/stage-stable-yellow.svg) ![Version](https://img.shields.io/badge/version-1.0-blue.svg)
 
-**ast** (**a**verage and **s**um **t**ool) is a command line tool designed to calculate the sum, mean, variance or standard
+**ast** (the **a**verage and **s**um **t**ool) is a command line tool designed to calculate the sum, mean, variance or standard
 deviation of a list of numbers passed through `stdin`.
 The aforementioned list can be any kind of text, it will be split according to a passed delimiter
 (defaults to `' '` and always splits lines)
