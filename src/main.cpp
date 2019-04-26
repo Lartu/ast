@@ -145,7 +145,7 @@ int main(int argc, char** argv){
     for(long double num : numbers){
         variance += pow((num - mean), 2);
     }
-    variance = variance / total_numbers;
+    variance = variance / (total_numbers - 1);
     
     // - If we are in variance mode, output variance and exit -
     if(f_varMode){
